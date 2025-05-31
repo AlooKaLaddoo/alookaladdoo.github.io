@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    @apply bg-terminal-black text-terminal-white font-mono;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .terminal-window {
+    @apply w-full bg-terminal-black border border-terminal-brightBlack/20 rounded-lg shadow-terminal backdrop-blur-sm relative z-10;
+    max-height: calc(100vh - 2rem);
+    width: 95vw;
+  }
+  
+  .terminal-header {
+    @apply flex items-center justify-between px-4 py-3 bg-terminal-brightBlack/30 border-b border-terminal-brightBlack/20 rounded-t-lg;
+  }
+  
+  .terminal-body {
+    @apply p-4 overflow-y-auto text-sm font-mono leading-relaxed;
+    height: calc(100vh - 12rem);
+    min-height: 600px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(65, 72, 104, 0.5) transparent;
+  }
+  
+  /* Responsive adjustments */
+  @screen sm {
+    .terminal-body {
+      height: calc(100vh - 10rem);
+      min-height: 500px;
+    }
+  }
+  
+  @screen md {
+    .terminal-body {
+      height: calc(100vh - 8rem);
+      min-height: 600px;
+    }
+  }
+  
+  @screen lg {
+    .terminal-body {
+      height: calc(100vh - 6rem);
+      min-height: 700px;
+    }
+  }
+  
+  .terminal-body::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  .terminal-body::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .terminal-body::-webkit-scrollbar-thumb {
+    @apply bg-terminal-brightBlack/50 rounded-full;
+  }
+  
+  .terminal-body::-webkit-scrollbar-thumb:hover {
+    @apply bg-terminal-brightBlack/70;
+  }
+  
+  .command-prompt {
+    @apply flex items-center mb-1;
+  }
+  
+  .command-input {
+    @apply flex-1 bg-transparent border-none outline-none text-terminal-white ml-2 font-mono;
+  }
+  
+  .command-input:focus {
+    @apply outline-none;
+  }
+}
