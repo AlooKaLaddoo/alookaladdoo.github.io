@@ -13,7 +13,7 @@ import Cursor from './Cursor';
  * @param {CommandLineProps} props
  */
 const CommandLine = ({
-  prompt = '$',
+  prompt = 'alookaladdoo@fedora:~',
   onSubmit,
   onArrowUp,
   onArrowDown,
@@ -50,20 +50,27 @@ const CommandLine = ({
 
   return (
     <form onSubmit={handleSubmit} className="command-prompt">
-      <span className="text-terminal-green">alookaladdoo@iiit {prompt}</span>
-      <input
-        ref={inputRef}
-        type="text"
-        className="command-input"
-        value={command}
-        onChange={(e) => setCommand(e.target.value)}
-        onKeyDown={handleKeyDown}
-        autoFocus
-        spellCheck="false"
-        autoComplete="off"
-        aria-label="Command input"
-      />
-      {!command && <Cursor />}
+      <span className="text-terminal-green">{prompt}</span>
+      <div className="relative flex items-center flex-1">
+        <span className="invisible absolute whitespace-pre font-mono">{command}</span>
+        <input
+          ref={inputRef}
+          type="text"
+          className="command-input absolute w-full"
+          value={command}
+          onChange={(e) => setCommand(e.target.value)}
+          onKeyDown={handleKeyDown}
+          autoFocus
+          spellCheck="false"
+          autoComplete="off"
+          aria-label="Command input"
+          style={{ caretColor: 'transparent', background: 'transparent' }}
+        />
+        <span className="flex">
+          <span className="font-mono">{command}</span>
+          <Cursor />
+        </span>
+      </div>
     </form>
   );
 };

@@ -11,7 +11,7 @@ import React from 'react';
 const Cursor = ({ blinking = true }) => {
   return (
     <span 
-      className={`inline-block w-2 h-4 bg-terminal-white ${
+      className={`inline-block w-2 h-5 bg-terminal-white ml-0 ${
         blinking ? 'animate-cursor-blink' : ''
       }`}
       aria-hidden="true"

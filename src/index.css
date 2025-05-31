@@ -79,10 +79,15 @@
   }
   
   .command-input {
-    @apply flex-1 bg-transparent border-none outline-none text-terminal-white ml-2 font-mono;
+    @apply bg-transparent border-none outline-none text-terminal-white ml-2 font-mono;
+    caret-color: transparent;
+    color: transparent;
+    z-index: 10;
   }
   
   .command-input:focus {
     @apply outline-none;
+    caret-color: transparent;
+    color: transparent;
   }
 }

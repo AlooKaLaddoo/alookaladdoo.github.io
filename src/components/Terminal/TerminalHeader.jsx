@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Circle, Sun, Moon } from 'lucide-react';
 
 /**
@@ -16,6 +16,42 @@ const TerminalHeader = ({
   onToggleTheme,
   isDarkMode,
 }) => {
+  const [userIP, setUserIP] = useState('...');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserIP = async () => {
+      try {
+        setIsLoading(true);
+        // Primary API
+        const response = await fetch('https://api.ipify.org?format=json');
+        
+        if (!response.ok) {
+          throw new Error('Primary API failed');
+        }
+        
+        const data = await response.json();
+        setUserIP(data.ip);
+      } catch (error) {
+        console.error('Primary IP fetch failed:', error);
+        
+        // Fallback API
+        try {
+          const fallbackResponse = await fetch('https://httpbin.org/ip');
+          const fallbackData = await fallbackResponse.json();
+          setUserIP(fallbackData.origin.split(',')[0]); // In case of multiple IPs
+        } catch (fallbackError) {
+          console.error('Fallback IP fetch failed:', fallbackError);
+          // Final fallback
+          setUserIP('localhost');
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserIP();
+  }, []);
   return (
     <div className="terminal-header">
       <div className="flex items-center gap-1.5">
@@ -40,7 +76,7 @@ const TerminalHeader = ({
       </div>
       
       <div className="flex-1 text-center text-sm text-terminal-brightWhite/70">
-        {title}@{window.location.hostname}
+        AlooKaLaddoo@{isLoading ? '...' : userIP}
       </div>
       
       <button 

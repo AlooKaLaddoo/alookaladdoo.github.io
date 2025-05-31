@@ -13,7 +13,7 @@ import { useState, useEffect, useRef } from 'react';
  */
 export function useTypingEffect({
   text,
-  speed = 50,
+  speed = 100,
   delay = 0,
   onComplete,
 }) {

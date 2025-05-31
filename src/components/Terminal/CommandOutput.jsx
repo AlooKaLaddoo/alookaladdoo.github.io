@@ -17,7 +17,7 @@ const CommandOutput = ({ command, output }) => {
   return (
     <div className="mb-2">
       <div className="command-prompt">
-        <span className="text-terminal-green">alookaladdoo@iiit $</span>
+        <span className="text-terminal-green">$</span>
         <span className="ml-2 text-terminal-white">{command}</span>
       </div>
       
