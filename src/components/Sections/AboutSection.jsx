@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
 
 /**
  * @typedef {Object} AboutProps
@@ -11,7 +11,7 @@ import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
  * @property {string} about.email
  * @property {string} about.github
  * @property {string} about.linkedin
- * @property {string} about.twitter
+ * @property {string} about.instagram
  * @property {string} about.bio
  */
 
@@ -58,13 +58,13 @@ const AboutSection = ({ about }) => {
           <Linkedin size={16} />
         </a>
         <a 
-          href={about.twitter} 
+          href={about.instagram} 
           target="_blank" 
           rel="noopener noreferrer"
           className="text-terminal-white hover:text-terminal-brightWhite"
-          aria-label="Twitter Profile"
+          aria-label="Instagram Profile"
         >
-          <Twitter size={16} />
+          <Instagram size={16} />
         </a>
         <a 
           href={`mailto:${about.email}`} 

@@ -19,6 +19,7 @@ const CommandLine = ({
   onArrowDown,
 }) => {
   const [command, setCommand] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef(null);
   
   const handleSubmit = (e) => {
@@ -41,6 +42,20 @@ const CommandLine = ({
     }
   };
 
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
+  const handleTerminalClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   // Auto focus the input field
   useEffect(() => {
     if (inputRef.current) {
@@ -50,8 +65,8 @@ const CommandLine = ({
 
   return (
     <form onSubmit={handleSubmit} className="command-prompt">
-      <span className="text-terminal-green">{prompt}</span>
-      <div className="relative flex items-center flex-1">
+      <span className="text-terminal-green">{prompt}$ </span>
+      <div className="relative flex items-center flex-1 cursor-text" onClick={handleTerminalClick}>
         <span className="invisible absolute whitespace-pre font-mono">{command}</span>
         <input
           ref={inputRef}
@@ -60,6 +75,8 @@ const CommandLine = ({
           value={command}
           onChange={(e) => setCommand(e.target.value)}
           onKeyDown={handleKeyDown}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           autoFocus
           spellCheck="false"
           autoComplete="off"
@@ -68,7 +85,7 @@ const CommandLine = ({
         />
         <span className="flex">
           <span className="font-mono">{command}</span>
-          <Cursor />
+          <Cursor blinking={isFocused} visible={isFocused} />
         </span>
       </div>
     </form>
