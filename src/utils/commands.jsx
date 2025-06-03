@@ -7,6 +7,7 @@ import ProjectsSection from '../components/Sections/ProjectsSection.jsx';
 import SkillsSection from '../components/Sections/SkillsSection.jsx';
 import ContactSection from '../components/Sections/ContactSection.jsx';
 import HelpSection from '../components/Sections/HelpSection.jsx';
+import PictureSection from '../components/Sections/PictureSection.jsx';
 
 /**
  * @typedef {import('../types/types.js').Command} Command
@@ -106,6 +107,15 @@ export const commandList = [
     execute: () => ({
       type: 'component',
       content: React.createElement(ContactSection, { about }),
+    }),
+  },
+  {
+    name: 'avatar',
+    description: 'Display my ASCII art avatar',
+    usage: 'avatar',
+    execute: () => ({
+      type: 'component',
+      content: React.createElement(PictureSection, { about }),
     }),
   },
   {
