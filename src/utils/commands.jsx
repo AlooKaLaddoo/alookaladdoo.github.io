@@ -146,46 +146,21 @@ export const commandList = [
     }),
   },
   {
-    name: 'whereami',
-    description: 'Display your current location',
-    usage: 'whereami',
-    execute: async () => {
-      try {
-        // Fetch user's IP and location information
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        
-        if (data.city && data.region && data.country) {
-          return {
-            type: 'text',
-            content: `You are currently in ${data.city}, ${data.region}, ${data.country}`,
-          };
-        } else if (data.city && data.country) {
-          return {
-            type: 'text',
-            content: `You are currently in ${data.city}, ${data.country}`,
-          };
-        } else {
-          return {
-            type: 'text',
-            content: 'Unable to determine your exact location',
-          };
-        }
-      } catch (error) {
-        return {
-          type: 'text',
-          content: 'Unable to fetch location information. You might be behind a VPN or firewall.',
-        };
-      }
-    },
+    name: 'whoami',
+    description: 'Display user information',
+    usage: 'whoami',
+    execute: () => ({
+      type: 'text',
+      content: `${about.name} (${about.title})`,
+    }),
   },
 ];
 
 /**
  * @param {string} input
- * @returns {Promise<CommandOutput>}
+ * @returns {CommandOutput}
  */
-export const processCommand = async (input) => {
+export const processCommand = (input) => {
   const trimmedInput = input.trim();
   if (!trimmedInput) {
     return { type: 'text', content: '' };
@@ -202,14 +177,5 @@ export const processCommand = async (input) => {
     };
   }
 
-  try {
-    const result = command.execute(args);
-    // Handle both sync and async commands
-    return result instanceof Promise ? await result : result;
-  } catch (error) {
-    return {
-      type: 'error',
-      content: `Error executing command: ${error.message}`,
-    };
-  }
+  return command.execute(args);
 };
