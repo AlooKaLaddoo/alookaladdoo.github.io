@@ -19,12 +19,9 @@ const PictureSection = ({ about }) => {
       transition={{ duration: 0.3 }}
       className="my-2"
     >
-      <div className="mb-4">
-        <h2 className="text-lg font-bold text-terminal-yellow mb-2">Picture of {about.name}</h2>
-        <p className="text-terminal-brightBlack text-sm mb-3">
-          Here's my ASCII art representation:
-        </p>
-      </div>
+      {/* <div className="mb-4">
+        <h2 className="text-lg font-bold text-terminal-yellow mb-2">Avatar of {about.name}</h2>
+      </div> */}
       
       <div className="flex justify-center mb-4">
         <pre className="text-terminal-cyan text-xs leading-none">{about.asciiArt}</pre>

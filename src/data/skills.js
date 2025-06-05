@@ -1,22 +1,22 @@
 export const skills = [
   {
     category: 'Frontend',
-    items: ['React', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'Next.js', 'Redux', 'Framer Motion'],
+    items: ['React', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'Next.js', 'Framer Motion'],
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Express', 'Python', 'Django', 'FastAPI', 'GraphQL', 'REST API'],
+    items: ['Node.js', 'Express', 'Python', 'Flask'],
   },
   {
     category: 'Database',
-    items: ['MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'Redis', 'Prisma'],
+    items: ['MongoDB', 'MySQL', 'Atlas'],
   },
   {
     category: 'DevOps',
-    items: ['Docker', 'Kubernetes', 'AWS', 'CI/CD', 'Git', 'GitHub Actions', 'Vercel', 'Netlify'],
+    items: ['Docker', 'CI/CD', 'Git', 'GitHub Actions'],
   },
   {
     category: 'Design',
-    items: ['Figma', 'Adobe XD', 'Photoshop', 'Illustrator', 'UI/UX', 'Responsive Design'],
+    items: ['Figma', 'UI/UX', 'Responsive Design'],
   },
 ];
