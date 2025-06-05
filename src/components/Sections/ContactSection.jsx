@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail, MapPin } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, MapPin } from 'lucide-react';
 
 /**
  * @typedef {Object} ContactSectionProps
@@ -10,7 +10,7 @@ import { Github, Linkedin, Twitter, Mail, MapPin } from 'lucide-react';
  * @property {string} about.location
  * @property {string} about.github
  * @property {string} about.linkedin
- * @property {string} about.twitter
+ * @property {string} about.instagram
  */
 
 /**
@@ -72,14 +72,14 @@ const ContactSection = ({ about }) => {
         </div>
         
         <div className="flex items-center gap-3">
-          <Twitter size={16} className="text-terminal-cyan" />
+          <Instagram size={16} className="text-terminal-cyan" />
           <a 
-            href={about.twitter}
+            href={about.instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="text-terminal-white hover:text-terminal-brightWhite"
           >
-            {about.twitter}
+            {about.instagram}
           </a>
         </div>
       </div>
